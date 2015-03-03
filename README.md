@@ -28,6 +28,11 @@ To generate a graph and filter on the name
   $ bundle exec ruby lib/visualize_aws.rb -a your_aws_key -s your_aws_secret_key -g 'regex' -f viz.svg --color-true
 ```
 
+Example regex to exclude certain prefixes.  This regex passed into the `-g` argument will include all groups except those prefixed by `demo-`, `test-`, or `stage-`.
+```
+  ^(?!(demo-|test-|stage-)).+$
+```
+
 To generate the graph using an existing security_groups.json (created using aws-cli)
 ```
   $ bundle exec ruby lib/visualize_aws.rb -o data/security_groups.json -f viz.svg --color
